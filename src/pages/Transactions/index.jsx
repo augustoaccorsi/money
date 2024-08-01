@@ -8,6 +8,7 @@ import {
 } from './styles';
 import SearchForm from './components/SearchForm/index';
 import { TransactionsContext } from '../../contexts/TransactionContext';
+import { priceFormatter, dateFormatter } from '../../utils/formatter';
 
 const Transactions = () => {
     const { transactions } = useContext(TransactionsContext);
@@ -24,11 +25,16 @@ const Transactions = () => {
                             <td width="50%">{transaction.description}</td>
                             <td>
                                 <PriceHighlight variant={transaction.type}>
-                                    {transaction.price}
+                                    {transaction.type === 'outcome' && '- '}
+                                    {priceFormatter.format(transaction.price)}
                                 </PriceHighlight>
                             </td>
                             <td>{transaction.category}</td>
-                            <td>{transaction.createdAt}</td>
+                            <td>
+                                {dateFormatter.format(
+                                    new Date(transaction.createdAt)
+                                )}
+                            </td>
                         </tbody>
                     ))}
                 </TransactionsTable>
