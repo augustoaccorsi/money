@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SearchFormContainer } from './styles';
 import { PiMagnifyingGlass } from 'react-icons/pi';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { TransactionsContext } from '../../../../contexts/TransactionContext';
 
 const searchFormSchema = z.object({ query: z.string() });
 
 const SearchForm = () => {
+    const { fetchTransactions } = useContext(TransactionsContext);
+
     const {
         register,
         handleSubmit,
@@ -17,7 +20,7 @@ const SearchForm = () => {
     });
 
     const handleSearchTransactions = async (data) => {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await fetchTransactions(data.query);
         console.log(data);
     };
 
