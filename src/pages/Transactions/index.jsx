@@ -6,14 +6,15 @@ import {
     TransactionsTable,
     PriceHighlight,
 } from './styles';
+import SearchForm from './components/SearchForm/index';
 
 const Transactions = () => {
     return (
         <div>
             <Header />
             <Summary />
-
             <TransactionsContainer>
+                <SearchForm />
                 <TransactionsTable>
                     <tbody>
                         <td width="50%">Website Development</td>
