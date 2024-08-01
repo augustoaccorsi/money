@@ -5,27 +5,11 @@ import {
     PiArrowCircleDown,
     PiArrowCircleUp,
 } from 'react-icons/pi';
-import { TransactionsContext } from '../../contexts/TransactionContext';
 import { priceFormatter } from '../../utils/formatter';
-
-const getSummary = (transactions) => {
-    let income = 0;
-    let outcome = 0;
-
-    transactions.forEach((transaction) => {
-        if (transaction.type === 'income') {
-            income += transaction.price;
-        } else {
-            outcome += transaction.price;
-        }
-    });
-
-    return { income: income, outcome: outcome, total: income - outcome };
-};
+import { useSummary } from '../../hooks/useSummary';
 
 const Summary = () => {
-    const { transactions } = useContext(TransactionsContext);
-    const summary = getSummary(transactions);
+    const summary = useSummary();
 
     return (
         <SummaryContainer>
