@@ -15,6 +15,22 @@
             "category": "Food",
             "price": 50,
             "createdAt": "2022-07-29T19:30:44.505Z"
+        },
+        {
+            "id": 3,
+            "description": "Freelancer Job",
+            "type": "income",
+            "category": "Sell",
+            "price": 6700,
+            "createdAt": "2022-07-30T11:36:44.505Z"
+        },
+        {
+            "id": 4,
+            "description": "React Course",
+            "type": "outcome",
+            "category": "Education",
+            "price": 1500,
+            "createdAt": "2022-07-31T12:22:44.505Z"
         }
     ]
 }
