@@ -3,14 +3,14 @@ import { API } from '../lib/axios';
 
 export const TransactionsContext = createContext();
 
-const TRANSACTION_API = 'http://localhost:3333/transactions';
-
 const TransactionsProvider = (props) => {
     const [transactions, setTransactions] = useState([]);
 
     const fetchTransactions = async (query) => {
         const response = await API.get('transactions', {
             params: {
+                _sort: 'createdAt',
+                _order: 'desc',
                 q: query,
             },
         });
@@ -21,11 +21,17 @@ const TransactionsProvider = (props) => {
         fetchTransactions();
     }, []);
 
+    const addNewTransaction = async (newTransaction) => {
+        const response = await API.post('transactions', newTransaction);
+        setTransactions([response.data, ...transactions]);
+    };
+
     return (
         <TransactionsContext.Provider
             value={{
                 transactions,
                 fetchTransactions,
+                addNewTransaction,
             }}
         >
             {props.children}

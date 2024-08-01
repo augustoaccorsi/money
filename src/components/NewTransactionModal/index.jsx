@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import {
     Overlay,
@@ -11,6 +11,8 @@ import { PiX, PiArrowCircleDown, PiArrowCircleUp } from 'react-icons/pi';
 import * as z from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { API } from '../../lib/axios';
+import { TransactionsContext } from '../../contexts/TransactionContext';
 
 const newTransactionModalSchema = z.object({
     description: z.string(),
@@ -20,18 +22,27 @@ const newTransactionModalSchema = z.object({
 });
 
 const NewTransactionModal = () => {
+    const { addNewTransaction } = useContext(TransactionsContext);
+
     const {
         control,
         register,
         handleSubmit,
         formState: { isSubmitting },
+        reset,
     } = useForm({
         resolver: zodResolver(newTransactionModalSchema),
     });
 
     const handleCreateNewTransaction = async (data) => {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-        console.log(data);
+        addNewTransaction({
+            description: data.description,
+            type: data.type,
+            category: data.category,
+            price: data.price,
+            createdAt: new Date().toDateString(),
+        });
+        reset();
     };
 
     return (

@@ -1,36 +1,60 @@
 {
-    "transactions": [
-        {
-            "id": 1,
-            "description": "Website development",
-            "type": "income",
-            "category": "Sell",
-            "price": 14000,
-            "createdAt": "2022-07-29T19:36:44.505Z"
-        },
-        {
-            "id": 2,
-            "description": "Pizza",
-            "type": "outcome",
-            "category": "Food",
-            "price": 50,
-            "createdAt": "2022-07-29T19:30:44.505Z"
-        },
-        {
-            "id": 3,
-            "description": "Freelancer Job",
-            "type": "income",
-            "category": "Sell",
-            "price": 6700,
-            "createdAt": "2022-07-30T11:36:44.505Z"
-        },
-        {
-            "id": 4,
-            "description": "React Course",
-            "type": "outcome",
-            "category": "Education",
-            "price": 1500,
-            "createdAt": "2022-07-31T12:22:44.505Z"
-        }
-    ]
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Website development",
+      "type": "income",
+      "category": "Sell",
+      "price": 14000,
+      "createdAt": "2022-07-29T19:36:44.505Z"
+    },
+    {
+      "id": 2,
+      "description": "Pizza",
+      "type": "outcome",
+      "category": "Food",
+      "price": 50,
+      "createdAt": "2022-07-29T19:30:44.505Z"
+    },
+    {
+      "id": 3,
+      "description": "Freelancer Job",
+      "type": "income",
+      "category": "Sell",
+      "price": 6700,
+      "createdAt": "2022-07-30T11:36:44.505Z"
+    },
+    {
+      "id": 4,
+      "description": "React Course",
+      "type": "outcome",
+      "category": "Education",
+      "price": 1500,
+      "createdAt": "2022-07-31T12:22:44.505Z"
+    },
+    {
+      "description": "teeste",
+      "type": "outcome",
+      "category": "teste",
+      "price": 78844,
+      "createdAt": "Thu Aug 01 2024",
+      "id": 5
+    },
+    {
+      "description": "teeste",
+      "type": "outcome",
+      "category": "teste",
+      "price": 78844,
+      "createdAt": "Thu Aug 01 2024",
+      "id": 6
+    },
+    {
+      "description": "outra",
+      "type": "income",
+      "category": "loteria",
+      "price": 800034,
+      "createdAt": "Thu Aug 01 2024",
+      "id": 7
+    }
+  ]
 }
