@@ -9,18 +9,19 @@ import {
 } from './styles';
 import { PiX, PiArrowCircleDown, PiArrowCircleUp } from 'react-icons/pi';
 import * as z from 'zod';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const newTransactionModalSchema = z.object({
     description: z.string(),
     price: z.number(),
     category: z.string(),
-    //type: z.enum(['income', 'outcome']),
+    type: z.enum(['income', 'outcome']),
 });
 
 const NewTransactionModal = () => {
     const {
+        control,
         register,
         handleSubmit,
         formState: { isSubmitting },
@@ -62,19 +63,28 @@ const NewTransactionModal = () => {
                         required
                     />
 
-                    <TransactionType>
-                        <TransactionTypeButton variant="income" value="income">
-                            <PiArrowCircleUp size={24} />
-                            Income
-                        </TransactionTypeButton>
-                        <TransactionTypeButton
-                            variant="outcome"
-                            value="outcome"
-                        >
-                            <PiArrowCircleDown size={24} />
-                            Outcome
-                        </TransactionTypeButton>
-                    </TransactionType>
+                    <Controller
+                        control={control}
+                        name="type"
+                        render={({ field }) => (
+                            <TransactionType onValueChange={field.onChange}>
+                                <TransactionTypeButton
+                                    variant="income"
+                                    value="income"
+                                >
+                                    <PiArrowCircleUp size={24} />
+                                    Income
+                                </TransactionTypeButton>
+                                <TransactionTypeButton
+                                    variant="outcome"
+                                    value="outcome"
+                                >
+                                    <PiArrowCircleDown size={24} />
+                                    Outcome
+                                </TransactionTypeButton>
+                            </TransactionType>
+                        )}
+                    />
 
                     <button disabled={isSubmitting} type="submit">
                         Save
