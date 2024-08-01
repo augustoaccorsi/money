@@ -55,6 +55,14 @@
       "price": 800034,
       "createdAt": "Thu Aug 01 2024",
       "id": 7
+    },
+    {
+      "description": "eeee",
+      "type": "outcome",
+      "category": "ee",
+      "price": 90,
+      "createdAt": "Thu Aug 01 2024",
+      "id": 8
     }
   ]
 }

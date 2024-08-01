@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import {
     Overlay,
@@ -11,8 +11,8 @@ import { PiX, PiArrowCircleDown, PiArrowCircleUp } from 'react-icons/pi';
 import * as z from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { API } from '../../lib/axios';
 import { TransactionsContext } from '../../contexts/TransactionContext';
+import { useContextSelector } from 'use-context-selector';
 
 const newTransactionModalSchema = z.object({
     description: z.string(),
@@ -22,7 +22,10 @@ const newTransactionModalSchema = z.object({
 });
 
 const NewTransactionModal = () => {
-    const { addNewTransaction } = useContext(TransactionsContext);
+    const addNewTransaction = useContextSelector(
+        TransactionsContext,
+        (context) => context.addNewTransaction
+    );
 
     const {
         control,

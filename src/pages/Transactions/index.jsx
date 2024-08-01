@@ -9,9 +9,13 @@ import {
 import SearchForm from './components/SearchForm/index';
 import { TransactionsContext } from '../../contexts/TransactionContext';
 import { priceFormatter, dateFormatter } from '../../utils/formatter';
+import { useContextSelector } from 'use-context-selector';
 
 const Transactions = () => {
-    const { transactions } = useContext(TransactionsContext);
+    const transactions = useContextSelector(
+        TransactionsContext,
+        (context) => context.transactions
+    );
 
     return (
         <div>
