@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { API } from '../lib/axios';
 
 export const TransactionsContext = createContext();
 
@@ -8,14 +9,12 @@ const TransactionsProvider = (props) => {
     const [transactions, setTransactions] = useState([]);
 
     const fetchTransactions = async (query) => {
-        const url = new URL(TRANSACTION_API);
-        if (query) {
-            url.searchParams.append('q', query);
-        }
-
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => setTransactions(data));
+        const response = await API.get('transactions', {
+            params: {
+                q: query,
+            },
+        });
+        setTransactions(response.data);
     };
 
     useEffect(() => {
